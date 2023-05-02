@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>메인페이지</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+<div class="charts-container">
+    <div class="chart">
+        <h1>주간 차트</h1>
+        <table id="weekly-table"></table>
+    </div>
+    <div class="chart">
+        <h1>데일리 차트</h1>
+        <table id="daily-table"></table>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            url: "/weekly",
+            dataType: "json",
+            success: function (data) {
+                var movieList = data;
+
+                var table = $("<table>").addClass("table");
+                var row = $("<tr>");
+                row.append($("<th>").text(" "));
+                row.append($("<th>").text("순위"));
+                row.append($("<th>").text("전주 대비 순위"));
+                row.append($("<th>").text("영화 제목"));
+                row.append($("<th>").text("개봉일"));
+                row.append($("<th>").text("누적 관객수"));
+                table.append(row);
+
+                $.each(movieList, function (key, value) {
+                    var mn = value.name;
+                    row = $("<tr>");
+                    // row.append($("<td>").text(key));
+                    row.append($("<td>").text(value.rankOldAndNew));
+                    row.append($("<td>").text(value.rank));
+                    row.append($("<td>").text(value.rankInten));
+                    row.append($("<td>").append($("<a>").attr('href', 'https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query=' + mn + '%20평점'.replace("localhost:8080", "")).text(value.name)));
+                    row.append($("<td>").text(value.openDt));
+                    row.append($("<td>").text(value.audiAcc));
+                    table.append(row);
+                });
+                $("#weekly-table").append(table);
+            }
+        });
+    });
+</script>
+<!--데일리차트-->
+<script>
+    $(document).ready(function () {
+            $.ajax({
+                url: "/main/daily",
+                dataType: "json",
+                success: function (data) {
+                    var movieList = data;
+
+                    var table = $("<table>").addClass("table");
+                    var row = $("<tr>");
+                    row.append($("<th>").text(" "));
+                    row.append($("<th>").text("순위"));
+                    row.append($("<th>").text("전일 대비 순위"));
+                    row.append($("<th>").text("영화 제목"));
+                    row.append($("<th>").text("개봉일"));
+                    row.append($("<th>").text("누적 관객수"));
+                    table.append(row);
+
+                    $.each(movieList, function (key, value) {
+                        var mn = value.name;
+                        row = $("<tr>");
+                        // row.append($("<td>").text(key));
+                        row.append($("<td>").text(value.rankOldAndNew));
+                        row.append($("<td>").text(value.rank));
+                        row.append($("<td>").text(value.rankInten));
+                        row.append($("<td>").append($("<a>").attr('href', 'https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query=' + mn + '%20평점'.replace("localhost:8080", "")).text(value.name)));
+                        row.append($("<td>").text(value.openDt));
+                        row.append($("<td>").text(value.audiAcc));
+                        table.append(row);
+                    });
+                    $("#daily-table").append(table);
+                }
+            });
+    });
+</script>
+
+
+</body>
+</html>

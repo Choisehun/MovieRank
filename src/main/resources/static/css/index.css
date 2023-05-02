@@ -1,0 +1,57 @@
+body {
+    background-color: #786666;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.charts-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    grid-gap: 20px;
+    grid-template-areas:
+        "daily weekly"
+        "daily2 weekly2";
+    justify-items: center;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+    padding: 50px;
+    overflow: auto;
+}
+
+.chart {
+    background-color: #F2F2F2;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.chart h1 {
+    margin-top: 0;
+}
+
+.table-wrapper {
+    max-height: 500px;
+}
+
+.table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.table th,
+.table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.table th {
+    background-color: #eee;
+}
