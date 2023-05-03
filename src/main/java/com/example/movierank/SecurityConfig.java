@@ -18,11 +18,6 @@ public class SecurityConfig {
 
 
 
-    @Bean
-    public BCryptPasswordEncoder bCryptPasswordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-
 
     /**
      * 인증 or 인가에 대한 설정
@@ -34,6 +29,7 @@ public class SecurityConfig {
                 .formLogin().disable() // FormLogin 사용 X
                 .httpBasic().disable() // httpBasic 사용 X
                 .csrf().disable() // csrf 보안 사용 X
+                .cors().and()
                 .sessionManagement().sessionFixation().none()
                 .and()
                 .headers().frameOptions().disable()
