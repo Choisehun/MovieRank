@@ -9,14 +9,16 @@
 <body>
 <div class="charts-container">
     <div class="chart">
-        <h1>주간 차트</h1>
+        <h1>주간 차트 <a style="font-size: 10px">*전주 기준</a></h1>
         <table id="weekly-table"></table>
     </div>
     <div class="chart">
-        <h1>데일리 차트</h1>
+        <h1>데일리 차트 <a style="font-size: 10px">*전일 기준</a></h1>
         <table id="daily-table"></table>
     </div>
 </div>
+<div th:if="${session.userId == null}">로그인</div>
+<div th:if="${session.userId != null}">로그아웃</div>
 <script>
     $(document).ready(function () {
         $.ajax({

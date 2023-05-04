@@ -3,14 +3,13 @@ package com.example.movierank.controller.core.userLogin;
 import com.example.movierank.domain.user.login.UserLoginServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/user/login")
+@SessionAttributes("userId")
 public class UserLoginController {
 
     private final UserLoginServiceImpl userLoginService;
@@ -22,10 +21,10 @@ public class UserLoginController {
     }
 
     @PostMapping("")
-    public String login(@RequestParam("userId") String userId,@RequestParam("password")String password){
-        System.out.println(userId+"비버:"+password);
+    public String login(@RequestParam("userId") String userId, @RequestParam("password")String password, Model model){
 
         userLoginService.login(userId,password);
+        model.addAttribute("userId",userId);
         return "redirect:/";
     }
 

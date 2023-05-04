@@ -8,19 +8,20 @@ body {
 
 .charts-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(1, 1fr);
-    grid-gap: 20px;
-    grid-template-areas:
-        "daily weekly"
-        "daily2 weekly2";
-    justify-items: center;
+    /*grid-template-columns: repeat(2, 1fr);*/
+    /*grid-template-rows: repeat(1, 1fr);*/
+    /*grid-gap: 20px;*/
+    /*grid-template-areas:*/
+    /*    "daily weekly"*/
+    /*    "daily2 weekly2";*/
+    /*justify-items: center;*/
     align-items: center;
     background-color: #fff;
     border-radius: 20px;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
     padding: 50px;
     overflow: auto;
+    margin-right: 30px;
 }
 
 .chart {
@@ -54,4 +55,19 @@ body {
 
 .table th {
     background-color: #eee;
+}
+
+.bottom{
+    display: grid;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+    padding: 50px;
+    overflow: auto;
+    gap: 186px;
+}
+
+.pp > * {
+    display: inline-block;
 }
