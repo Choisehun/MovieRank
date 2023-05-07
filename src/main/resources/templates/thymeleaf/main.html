@@ -12,7 +12,8 @@
 <div class="charts-container">
     <nav class="navbar">
         <ul>
-            <li th:if="${session.userId == null}"><a th:href="@{/user/login}">로그인</a></li>
+         //   <li th:if="${session.userId == null}"><a th:href="@{/user/login}">로그인</a></li>
+            <li th:if="${session.userId == null}"><a>로그인</a></li>
             <li th:if="${session.userId == null}"><a th:href="@{/user/login}">회원가입</a></li>
             <li th:if="${session.userId != null}"><a th:href="@{/user/logout}">로그아웃</a></li>
 
